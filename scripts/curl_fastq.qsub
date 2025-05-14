@@ -1,0 +1,5 @@
+#PBS -o "curl_output.log"
+#PBS -l nodes=1:ppn=1
+
+wget --retry-connrefused --read-timeout=20 --timeout=15 --tries=0 --continue -O "${PWD}/${DIR}/${FILENAME}" $LINK
+tar -xvf "${PWD}/${DIR}/${FILENAME}" -C "${PWD}/${DIR}/" --strip-components=1

@@ -1,0 +1,13 @@
+#PBS -o "cellranger_output.log"
+#PBS -l nodes=1:ppn=16
+
+REF=refdata-gex-GRCh38-2020-A
+SAMPLE=$(basename $FQDIR)
+
+CPU=16
+MEM=128
+CHEM="auto"
+
+module load cellranger/7.2.0
+
+cellranger count --id=$SAMPLE --fastqs=$FQDIR --sample=$SAMPLE --transcriptome=$REF --localcores=$CPU --localmem=$MEM --chemistry=$CHEM
